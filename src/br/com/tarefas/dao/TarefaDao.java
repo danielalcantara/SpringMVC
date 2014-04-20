@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import br.com.tarefas.jdbc.ConnectionFactory;
 import br.com.tarefas.model.Tarefa;
 
+@Repository
 public class TarefaDao {
 	// Conexão com bando de dados
 	private Connection connection;

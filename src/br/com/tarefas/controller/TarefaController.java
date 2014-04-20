@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,13 @@ import br.com.tarefas.model.Tarefa;
 @RequestMapping("tarefa")
 public class TarefaController {
 	
+	private TarefaDao tarefaDao;
+	
+	@Autowired
+	public TarefaController(TarefaDao dao) {
+		this.tarefaDao = dao;
+	}
+
 	@RequestMapping("formAdicionar")
 	public String formAdicionar() {
 		return "tarefa/adicionar";
@@ -31,14 +39,12 @@ public class TarefaController {
 		if (result.hasErrors()) {
 			return "tarefa/adicionar";
 		}
-		TarefaDao tarefaDao = new TarefaDao();
 		tarefaDao.adiciona(tarefa);
 		return "tarefa/adicionada";
 	}
 	
 	@RequestMapping("listar")
 	public String listar(Model model) {
-		TarefaDao tarefaDao = new TarefaDao();
 		List<Tarefa> tarefas = tarefaDao.lista();
 		model.addAttribute("tarefas", tarefas);
 		return "tarefa/listar";
@@ -46,7 +52,6 @@ public class TarefaController {
 	
 	@RequestMapping("remover")
 	public String remover(Tarefa tarefa) {
-		TarefaDao tarefaDao = new TarefaDao();
 		tarefaDao.remover(tarefa);
 		return "redirect:listar";
 	}
@@ -59,14 +64,12 @@ public class TarefaController {
 			request.setAttribute("camposObr", true);
 			return "tarefa/editar";
 		}
-		TarefaDao tarefaDao = new TarefaDao();
 		tarefaDao.editar(tarefa);
 		return "redirect:listar";
 	}
 	
 	@RequestMapping("formEditar")
 	public String formEtidar(Long id, Model model) {
-		TarefaDao tarefaDao = new TarefaDao();
 		Tarefa tarefa = tarefaDao.buscarPorId(id);
 		model.addAttribute("tarefa", tarefa);
 		return "tarefa/editar";
@@ -74,7 +77,6 @@ public class TarefaController {
 	
 	@RequestMapping(value="setSituacao", produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Tarefa setStiuacao(Long id, boolean situacao) {
-		TarefaDao tarefaDao = new TarefaDao();
 		Tarefa tarefa = tarefaDao.buscarPorId(id);
 		
 		if (situacao) {
