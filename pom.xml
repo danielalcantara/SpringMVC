@@ -96,6 +96,12 @@
 			<version>1.4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.kenai.nbpwr</groupId>
+			<artifactId>javax-inject</artifactId>
+			<version>1.0-201002241208</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

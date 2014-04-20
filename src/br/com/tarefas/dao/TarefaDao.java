@@ -10,18 +10,27 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.sql.DataSource;
+
 import org.springframework.stereotype.Repository;
 
-import br.com.tarefas.jdbc.ConnectionFactory;
 import br.com.tarefas.model.Tarefa;
 
 @Repository
 public class TarefaDao {
 	// Conexão com bando de dados
 	private Connection connection;
-
-	public TarefaDao() {
-		this.connection = new ConnectionFactory().getConnection();
+	
+	@Inject
+	public TarefaDao(DataSource dataSource) {
+		try {
+			this.connection = dataSource.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 	public long adiciona(Tarefa tarefa) {

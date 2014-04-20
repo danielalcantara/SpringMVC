@@ -29,9 +29,9 @@
 	</bean>
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost/fj21"/>
-		<property name="username" value="root"/>
-		<property name="password" value=""/>
+		<property name="driverClassName" value="org.postgresql.Driver"/>
+		<property name="url" value="jdbc:postgresql://localhost/agenda_tarefas"/>
+		<property name="username" value="agendadb"/>
+		<property name="password" value="teste"/>
 	</bean>
 </beans>

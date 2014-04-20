@@ -5,15 +5,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.tarefas.jdbc.ConnectionFactory;
+import javax.inject.Inject;
+import javax.sql.DataSource;
+
+import org.springframework.stereotype.Repository;
+
 import br.com.tarefas.model.Usuario;
 
+@Repository
 public class UsuarioDao {
 	// Conexão com bando de dados
 	private Connection connection;
 
-	public UsuarioDao() {
-		this.connection = new ConnectionFactory().getConnection();
+	@Inject
+	public UsuarioDao(DataSource dataSource) {
+		try {
+			this.connection = dataSource.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public Usuario buscarPorLogin(String login) {

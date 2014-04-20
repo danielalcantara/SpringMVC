@@ -12,3 +12,21 @@ label {
 .msgErro {
 	color: red;
 }
+
+#divTopoPagina {
+	width: 100%;
+	float: left;
+}
+
+#tituloPagina {
+	margin: 0;
+	float: left;
+}
+
+#logout {
+	float: right;
+}
+
+.divClean {
+	clear: both;
+}
