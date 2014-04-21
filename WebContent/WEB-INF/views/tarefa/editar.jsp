@@ -9,16 +9,20 @@
 	<c:import url="${ template }topo.jsp"></c:import>
 	<c:if test="${ camposObr }"><span class="msgErro"><fmt:message key="campos.obrigatorios"></fmt:message></span></c:if>
 	<h3>Adicionar tarefa</h3>
-	<form action="editar" method="post">
+	<form id="formCadTarefa" action="editar" method="post">
 		<input type="hidden" name="id" value="${ tarefa.id }">
-		<label for="titulo">Título: </label><input type="text" name="titulo" value="${ tarefa.titulo }" />
+		<label for="titulo">Título: </label>
+		<input type="text" name="titulo" value="${ tarefa.titulo }" />
 		<form:errors path="tarefa.titulo" cssStyle="color:red;" />
 		<br />
-		<label for="descricao">Descrição: </label><textarea rows="5" cols="30" name="descricao">${ tarefa.descricao }</textarea>
+		<label for="descricao">Descrição: </label>
+		<textarea rows="5" cols="30" name="descricao">${ tarefa.descricao }</textarea>
 		<form:errors path="tarefa.descricao" cssStyle="color:red;" />
 		<br>
-		<label for="finalizado">Finalizado? </label><input type="checkbox" name="finalizado" value="true" ${ tarefa.finalizado ? 'checked' : '' }>
+		<label for="finalizado">Finalizado? </label>
+		<input type="checkbox" name="finalizado" value="true" ${ tarefa.finalizado ? 'checked' : '' }>
 		<br />
+		<div class="divClean"></div>
 		<label for="dataFinalizacao">Data Finalização: </label>
 		<input type="text" name="dataFinalizacao" class="campoData" value='<fmt:formatDate value="${ tarefa.dataFinalizacao.time }" pattern="dd/MM/yyyy"/>'>
 		<br>

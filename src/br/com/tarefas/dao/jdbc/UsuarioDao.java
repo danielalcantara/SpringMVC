@@ -1,4 +1,4 @@
-package br.com.tarefas.dao;
+package br.com.tarefas.dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,10 +10,11 @@ import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.tarefas.dao.IUsuarioDao;
 import br.com.tarefas.model.Usuario;
 
 @Repository
-public class UsuarioDao {
+public class UsuarioDao implements IUsuarioDao {
 	// Conexão com bando de dados
 	private Connection connection;
 
@@ -62,7 +63,9 @@ public class UsuarioDao {
 		// TODO Auto-generated method stub
 		Usuario usuarioBd = this.buscarPorLogin(usuario.getLogin());
 		if (usuarioBd != null) {
-			return true;
+			if (usuario.getSenha().equals(usuarioBd.getSenha())) {
+				return true;
+			}
 		}
 		return false;
 	}

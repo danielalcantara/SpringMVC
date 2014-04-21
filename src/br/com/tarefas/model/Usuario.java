@@ -1,9 +1,25 @@
 package br.com.tarefas.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
 public class Usuario {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "usuario_id_seq")
+	@SequenceGenerator(name = "usuario_id_seq", sequenceName = "usuario_id_seq")
+	@Column(columnDefinition = "serial")
 	private Long id;
+	@Column(nullable=false)
 	private String nome;
+	@Column(nullable=false)
 	private String login;
+	@Column(nullable=false)
 	private String senha;
 
 	public Long getId() {

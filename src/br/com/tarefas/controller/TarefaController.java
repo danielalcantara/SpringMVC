@@ -4,30 +4,30 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.com.tarefas.dao.TarefaDao;
+import br.com.tarefas.dao.ITarefaDao;
 import br.com.tarefas.model.Tarefa;
 
+@Transactional
 @Controller
 @RequestMapping("tarefa")
 public class TarefaController {
 	
-	private TarefaDao tarefaDao;
-	
-	@Inject
-	public TarefaController(TarefaDao dao) {
-		this.tarefaDao = dao;
-	}
+	@Autowired
+	@Qualifier("jpaTarefaDao")
+	private ITarefaDao tarefaDao;
 
 	@RequestMapping("formAdicionar")
 	public String formAdicionar() {
@@ -40,7 +40,7 @@ public class TarefaController {
 			return "tarefa/adicionar";
 		}
 		tarefaDao.adiciona(tarefa);
-		return "tarefa/adicionada";
+		return "redirect:listar";
 	}
 	
 	@RequestMapping("listar")

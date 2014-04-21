@@ -1,23 +1,21 @@
 package br.com.tarefas.controller;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.tarefas.dao.UsuarioDao;
+import br.com.tarefas.dao.IUsuarioDao;
 import br.com.tarefas.model.Usuario;
 
 @Controller
 public class LoginController {
 	
-	private UsuarioDao usuarioDao;
-	
-	@Inject
-	public LoginController(UsuarioDao usuarioDao) {
-		this.usuarioDao = usuarioDao;
-	}
+	@Autowired
+	@Qualifier("jpaUsuarioDao")
+	private IUsuarioDao usuarioDao;
 
 	@RequestMapping("loginForm")
 	public String loginForm() {

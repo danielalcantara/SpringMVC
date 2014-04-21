@@ -1,12 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>fj21-tarefas</groupId>
-	<artifactId>fj21-tarefas</artifactId>
+	<artifactId>spring-mvc</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
-	<name>agenda-tarefa</name>
-	<description>agenda de tarefas</description>
 
 	<properties>
 		<spring.version>3.2.8.RELEASE</spring.version>
@@ -38,6 +35,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 
@@ -102,6 +105,14 @@
 			<version>1.0-201002241208</version>
 		</dependency>
 
+		<!-- Hibernate -->
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.5.Final</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -153,4 +164,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	<groupId>spring-mvc</groupId>
+	<name>SpringMVC</name>
+	<description>MVC com spring e persistência com JPA e Hibernate</description>
 </project>

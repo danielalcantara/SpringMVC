@@ -1,4 +1,4 @@
-package br.com.tarefas.dao;
+package br.com.tarefas.dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,10 +15,11 @@ import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.tarefas.dao.ITarefaDao;
 import br.com.tarefas.model.Tarefa;
 
 @Repository
-public class TarefaDao {
+public class TarefaDao implements ITarefaDao {
 	// Conexão com bando de dados
 	private Connection connection;
 	
@@ -109,39 +110,6 @@ public class TarefaDao {
 			stmt.execute();
 			stmt.close();
 			System.out.println("Excluido!");
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	public Tarefa buscar(Tarefa tarefa) {
-		// cria um preparedStatement
-		String sql = "select * from public.\"Tarefa\" where id = ?";
-
-		try {
-			PreparedStatement stmt = connection.prepareStatement(sql);
-
-			stmt.setLong(1, tarefa.getId());
-
-			ResultSet rs = stmt.executeQuery();
-			rs.next();
-			
-			tarefa.setId(rs.getLong("id"));
-			tarefa.setTitulo(rs.getString("titulo"));
-			tarefa.setDescricao(rs.getString("descricao"));
-			tarefa.setFinalizado(rs.getBoolean("finalizado"));
-
-			if (rs.getDate("dataFinalizacao") != null) {
-				// Montando data através do calendar
-				Calendar data = Calendar.getInstance();
-				data.setTime(rs.getDate("dataFinalizacao"));
-				tarefa.setDataFinalizacao(data);
-			}
-
-			rs.close();
-			stmt.close();
-
-			return tarefa;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

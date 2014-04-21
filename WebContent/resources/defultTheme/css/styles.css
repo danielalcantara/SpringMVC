@@ -4,9 +4,17 @@
 	width: 66px;
 }
 
-label {
+#formCadTarefa label, #formLogin label {
 	float: left;
+	padding-top: 3px;
+}
+
+#formCadTarefa label {
 	width: 110px;
+}
+
+#formLogin label {
+	width: 50px;
 }
 
 .msgErro {
@@ -29,4 +37,38 @@ label {
 
 .divClean {
 	clear: both;
+}
+
+table {
+	border: 0;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: #AAAAFF;
+	text-align: center;
+}
+
+.linhaPar {
+	background-color: #EEEEFF;
+}
+
+.linhaImpar {
+	background-color: transparent;
+}
+
+.tdCenter {
+	text-align: center;
+}
+
+.tableList a {
+	padding: 0 3px;
+}
+
+.tableList td {
+	padding: 0 5px;
+}
+
+.tdTextoLongo {
+	width: 50%;
 }

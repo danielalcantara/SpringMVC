@@ -6,10 +6,15 @@
 </head>
 <body>
 	<c:import url="${ template }topo.jsp"></c:import>
-	<h2>Página de Login das Tarefas</h2>
-	<form action="efetuaLogin" method="post">
-		Login: <input type="text" name="login" /> <br /> Senha: <input
-			type="password" name="senha" /> <br /> <input type="submit"
-			value="Entrar" />
+	<h2>Página de Login</h2>
+	<form id="formLogin" action="efetuaLogin" method="post">
+		<label for="login">Login: </label>
+		<input type="text" name="login" />
+		<br />
+		<label for="senha">Senha: </label>
+		<input type="password" name="senha" />
+		<p>
+			<input type="submit" value="Entrar" />
+		</p>
 	</form>
 	<c:import url="${ template }rodape.jsp"></c:import>

@@ -6,30 +6,29 @@
 </head>
 <body>
 	<c:import url="${ template }topo.jsp"></c:import>
-	<input type="button" value="Adicionar"
+	<input type="button" value="Cria nova tarefa"
 		onclick="redirecPagina('formAdicionar')">
 	<br>
 	<br>
-	<table border="1">
+	<table class="tableList">
 		<tr>
 			<th>Código</th>
 			<th>Título</th>
-			<th>Descrição</th>
+			<th class="tdTextoLongo">Descrição</th>
 			<th>Finalizado</th>
-			<th>Situação</th>
 			<th>Data Finalização</th>
 			<th colspan="2">Ações</th>
 		</tr>
 		<c:forEach var="tarefa" items="${tarefas}" varStatus="id">
-			<tr bgcolor="#${ id.count % 2 == 0 ? 'aaee88' : 'ffffff' }">
-				<td>${tarefa.id}</td>
+			<tr class="${ id.count % 2 == 0 ? 'linhaPar' : 'linhaImpar' }">
+				<td class="tdCenter">${tarefa.id}</td>
 				<td>${tarefa.titulo}</td>
 				<td>${tarefa.descricao}</td>
-				<td align="center">
+				<td class="tdCenter">
 					<input type="checkbox" value="true"	onclick="setSituacao(${ tarefa.id }, this.checked);"
 					${ tarefa.finalizado ? 'checked' : '' }>
 				</td>
-				<td id="dataFinalizacao_${ tarefa.id }" align="center">
+				<td id="dataFinalizacao_${ tarefa.id }" class="tdCenter">
 					<fmt:formatDate	value="${ tarefa.dataFinalizacao.time }" pattern="dd/MM/yyyy" />
 				</td>
 				<td><a href="remover?id=${ tarefa.id }">Remover</a></td>

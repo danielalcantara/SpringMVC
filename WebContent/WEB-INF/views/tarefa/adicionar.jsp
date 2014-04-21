@@ -7,7 +7,7 @@
 <body>
 	<c:import url="${ template }topo.jsp"></c:import>
 	<h3>Adicionar tarefa</h3>
-	<form action="adicionar" method="post">
+	<form id="formCadTarefa" action="adicionar" method="post">
 		<label for="titulo">Título: </label><input type="text" name="titulo" />
 		<form:errors path="tarefa.titulo" cssStyle="color:red;" />
 		<br /> <label for="descricao">Descrição: </label>
