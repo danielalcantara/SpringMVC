@@ -9,7 +9,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -75,7 +74,7 @@ public class TarefaController {
 		return "tarefa/editar";
 	}
 	
-	@RequestMapping(value="setSituacao", produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="setSituacao")
 	public @ResponseBody Tarefa setStiuacao(Long id, boolean situacao) {
 		Tarefa tarefa = tarefaDao.buscarPorId(id);
 		

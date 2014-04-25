@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 <c:url value="../template/" var="template"></c:url>
 <c:import url="${ template }cabecalho.jsp"></c:import>
 <title>Listar Contato</title>

@@ -3,6 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <c:url value="../template/" var="template"></c:url>
 <c:import url="${ template }cabecalho.jsp"></c:import>
+<c:url value="/resources/" var="resources" />
+<script type="text/javascript" src="${ resources }js/tarefa/funcoes.js"></script>
 <title>Cadastro de Tarefa</title>
 </head>
 <body>
@@ -20,11 +22,11 @@
 		<form:errors path="tarefa.descricao" cssStyle="color:red;" />
 		<br>
 		<label for="finalizado">Finalizado? </label>
-		<input type="checkbox" name="finalizado" value="true" ${ tarefa.finalizado ? 'checked' : '' }>
+		<input type="checkbox" name="finalizado" id="finalizado" value="true" ${ tarefa.finalizado ? 'checked' : '' }>
 		<br />
 		<div class="divClean"></div>
 		<label for="dataFinalizacao">Data Finalização: </label>
-		<input type="text" name="dataFinalizacao" class="campoData" value='<fmt:formatDate value="${ tarefa.dataFinalizacao.time }" pattern="dd/MM/yyyy"/>'>
+		<input type="text" name="dataFinalizacao" id="dataFinalizacao" class="campoData" value='<fmt:formatDate value="${ tarefa.dataFinalizacao.time }" pattern="dd/MM/yyyy"/>'>
 		<br>
 		<br>
 		<input type="button" value="Voltar" onclick="redirecPagina('listar')">
