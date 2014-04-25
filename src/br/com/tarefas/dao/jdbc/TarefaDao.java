@@ -28,7 +28,6 @@ public class TarefaDao implements ITarefaDao {
 		try {
 			this.connection = dataSource.getConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}

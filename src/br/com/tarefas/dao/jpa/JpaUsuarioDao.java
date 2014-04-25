@@ -17,7 +17,6 @@ public class JpaUsuarioDao implements IUsuarioDao {
 
 	@Override
 	public Usuario buscarPorLogin(String login) {
-		// TODO Auto-generated method stub
 		Query query = manager.createQuery("select u from Usuario as u "
 				+ "where u.login = :login");
 		try {
@@ -30,7 +29,6 @@ public class JpaUsuarioDao implements IUsuarioDao {
 
 	@Override
 	public boolean existeUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
 		Usuario usuarioBd = this.buscarPorLogin(usuario.getLogin());
 		if (usuarioBd != null) {
 			if (usuario.getSenha().equals(usuarioBd.getSenha())) {

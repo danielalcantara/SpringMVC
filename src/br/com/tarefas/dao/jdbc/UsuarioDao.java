@@ -23,7 +23,6 @@ public class UsuarioDao implements IUsuarioDao {
 		try {
 			this.connection = dataSource.getConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
@@ -60,7 +59,6 @@ public class UsuarioDao implements IUsuarioDao {
 	}
 
 	public boolean existeUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
 		Usuario usuarioBd = this.buscarPorLogin(usuario.getLogin());
 		if (usuarioBd != null) {
 			if (usuario.getSenha().equals(usuarioBd.getSenha())) {
